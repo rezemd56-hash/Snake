@@ -11,7 +11,7 @@ Hola este es mi juego de la serpiente
 >**Nota** está en desarrollo Haci como un Beta 
 
 | Roll | Desarrollador |
-| :--- |.    :---      |
+| :--- |     :---      |
 | Desarrollador | [Cuervita]() |
 
 ##Instalacion 
