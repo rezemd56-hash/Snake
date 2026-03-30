@@ -732,4 +732,853 @@
         }
 
         .stat-line .label {
-       
+            color: #94a3b8;
+        }
+
+        .stat-line .value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .game-over-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .modal-btn {
+            padding: 15px 25px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .restart-btn {
+            background: linear-gradient(135deg, var(--success), var(--primary));
+            color: white;
+            box-shadow: 0 5px 20px rgba(16, 185, 129, 0.3);
+        }
+
+        .restart-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(16, 185, 129, 0.5);
+        }
+
+        .menu-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1.5px solid rgba(99, 102, 241, 0.5);
+            color: white;
+        }
+
+        .menu-btn:hover {
+            background: rgba(99, 102, 241, 0.2);
+            transform: translateY(-3px);
+        }
+
+        /* ANIMACIONES */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* INPUT FILE HIDDEN */
+        input[type="file"] {
+            display: none;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .game-title h1 {
+                font-size: 2.5rem;
+            }
+
+            .mode-buttons {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .mode-btn {
+                padding: 35px 20px;
+            }
+
+            canvas {
+                max-width: 90vw;
+                max-height: 90vw;
+            }
+
+            .game-over-content {
+                padding: 35px 25px;
+            }
+
+            .game-over-content h2 {
+                font-size: 1.8rem;
+            }
+
+            .game-over-buttons {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-buttons {
+                grid-template-columns: 1fr;
+            }
+
+            .leaderboard-container {
+                max-height: 400px;
+            }
+        }
+
+        .speed-info {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-top: 10px;
+        }
+
+        /* SCROLLBAR PERSONALIZADO */
+        .leaderboard-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .leaderboard-container::-webkit-scrollbar-track {
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 10px;
+        }
+
+        .leaderboard-container::-webkit-scrollbar-thumb {
+            background: rgba(99, 102, 241, 0.5);
+            border-radius: 10px;
+        }
+
+        .leaderboard-container::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-screen" id="profileScreen">
+        <div class="profile-header">
+            <h1>🐍 SNAKE V1.2</h1>
+            <p>Configura tu perfil para jugar</p>
+        </div>
+
+        <div class="profile-form">
+            <div class="avatar-upload">
+                <div class="avatar-preview" id="avatarPreview">👤</div>
+                <div class="avatar-buttons">
+                    <button class="upload-btn" id="uploadBtn">📤 Subir Foto</button>
+                    <button class="camera-btn" id="cameraBtn">📷 Cámara</button>
+                </div>
+                <input type="file" id="fileInput" accept="image/*">
+                <input type="text" id="urlInput" placeholder="O pega URL de imagen...">
+            </div>
+
+            <div class="form-group">
+                <label for="username">Nombre de Usuario</label>
+                <input type="text" id="username" placeholder="Tu nombre de jugador..." maxlength="20">
+            </div>
+
+            <div class="form-group">
+                <label for="password">🔐 Contraseña</label>
+                <input type="password" id="password" placeholder="Tu contraseña (mín. 4 caracteres)..." maxlength="30">
+            </div>
+
+            <div class="profile-buttons">
+                <button class="start-btn" id="continueBtn">Continuar</button>
+                <button class="leaderboard-btn" id="leaderboardViewBtn">📊 Top 10</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="leaderboard-screen hidden" id="leaderboardScreen">
+        <div class="leaderboard-header">
+            <h1>🏆 RANKING GLOBAL</h1>
+            <p>Los mejores jugadores</p>
+        </div>
+
+        <div class="leaderboard-container" id="leaderboardContainer">
+            <div class="leaderboard-empty">Cargando ranking...</div>
+        </div>
+
+        <div class="leaderboard-footer">
+            <button class="start-btn" id="backToProfileBtn" style="flex: 1;">← Volver</button>
+        </div>
+    </div>
+
+    <div class="mode-selector hidden" id="modeSelector">
+        <div class="user-info-bar">
+            <div class="user-avatar-small" id="userAvatarSmall">👤</div>
+            <div class="user-details">
+                <div class="user-name" id="userNameDisplay">Jugador</div>
+                <div class="user-record" id="userRecordDisplay">Récord: 0</div>
+            </div>
+            <button class="change-user-btn" id="changeUserBtn">Cambiar Perfil</button>
+        </div>
+
+        <div class="game-title">
+            <h1>🐍 SNAKE V1.3</h1>
+            <p>Elige tu modo de juego</p>
+        </div>
+
+        <div class="mode-buttons">
+            <button class="mode-btn" id="pcMode">
+                <div class="mode-icon">🖥️</div>
+                <div class="mode-text">
+                    <h2>Modo PC</h2>
+                    <p>Controles con teclado</p>
+                    <div class="speed-info">⚡ Velocidad Rápida</div>
+                </div>
+            </button>
+            <button class="mode-btn" id="mobileMode">
+                <div class="mode-icon">📱</div>
+                <div class="mode-text">
+                    <h2>Modo Móvil</h2>
+                    <p>Botones táctiles</p>
+                    <div class="speed-info">🎮 Velocidad Adaptada</div>
+                </div>
+            </button>
+        </div>
+    </div>
+
+    <div class="game-container hidden" id="gameContainer">
+        <div class="game-header">
+            <button class="back-btn" id="backBtn">← Volver</button>
+            <div class="score-display">
+                <h3>Puntuación</h3>
+                <div class="score-value" id="score">0</div>
+            </div>
+            <div class="high-score">
+                <h3>Récord</h3>
+                <div class="score-value" id="highScore">0</div>
+            </div>
+        </div>
+
+        <div class="game-canvas-wrapper">
+            <canvas id="gameCanvas"></canvas>
+        </div>
+
+        <div class="mobile-controls" id="mobileControls">
+            <div class="controls-grid">
+                <button class="control-btn up" id="btnUp">▲</button>
+                <button class="control-btn left" id="btnLeft">◄</button>
+                <button class="control-btn down" id="btnDown">▼</button>
+                <button class="control-btn right" id="btnRight">►</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="game-over-modal" id="gameOverModal">
+        <div class="game-over-content">
+            <div class="game-over-icon">💀</div>
+            <h2>¡Juego Terminado!</h2>
+            <div class="game-over-stats">
+                <div class="stat-line">
+                    <span class="label">Puntuación Final:</span>
+                    <span class="value" id="finalScore">0</span>
+                </div>
+                <div class="stat-line">
+                    <span class="label">Tu Récord:</span>
+                    <span class="value" id="bestScore">0</span>
+                </div>
+            </div>
+            <div class="game-over-buttons">
+                <button class="modal-btn restart-btn" id="restartBtn">Jugar de Nuevo</button>
+                <button class="modal-btn menu-btn" id="menuBtn">Menú Principal</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==================== SISTEMA DE PERFIL Y LEADERBOARD ====================
+        
+        class GameProfile {
+            constructor() {
+                this.username = localStorage.getItem('gameUsername') || '';
+                this.avatar = localStorage.getItem('gameAvatar') || '👤';
+                this.password = localStorage.getItem('gamePassword') || '';
+                this.loadProfile();
+            }
+
+            saveProfile() {
+                localStorage.setItem('gameUsername', this.username);
+                localStorage.setItem('gameAvatar', this.avatar);
+                localStorage.setItem('gamePassword', this.password);
+            }
+
+            loadProfile() {
+                if (this.username && this.avatar !== '👤') {
+                    this.updateUI();
+                }
+            }
+
+            updateUI() {
+                document.getElementById('userNameDisplay').textContent = this.username;
+                document.getElementById('userAvatarSmall').innerHTML = this.avatar;
+                document.getElementById('avatarPreview').innerHTML = this.avatar;
+            }
+
+            isProfileComplete() {
+                return this.username.trim().length > 0 && this.password.length > 0;
+            }
+        }
+
+        class Leaderboard {
+            constructor() {
+                this.key = 'snakeLeaderboard';
+            }
+
+            addScore(username, score, avatar) {
+                let leaderboard = this.getAll();
+                
+                // Buscar si el usuario ya existe
+                let existingIndex = leaderboard.findIndex(entry => entry.username === username);
+                
+                if (existingIndex !== -1) {
+                    // Actualizar si es mayor puntuación
+                    if (score > leaderboard[existingIndex].score) {
+                        leaderboard[existingIndex].score = score;
+                        leaderboard[existingIndex].avatar = avatar;
+                    }
+                } else {
+                    // Añadir nuevo usuario
+                    leaderboard.push({
+                        username,
+                        score,
+                        avatar,
+                        date: new Date().toISOString()
+                    });
+                }
+
+                // Ordenar y guardar
+                leaderboard.sort((a, b) => b.score - a.score);
+                localStorage.setItem(this.key, JSON.stringify(leaderboard));
+                
+                return leaderboard;
+            }
+
+            getAll() {
+                const data = localStorage.getItem(this.key);
+                return data ? JSON.parse(data) : [];
+            }
+
+            getTopScores(limit = 10) {
+                return this.getAll().slice(0, limit);
+            }
+
+            getPlayerRank(username) {
+                const leaderboard = this.getAll();
+                return leaderboard.findIndex(entry => entry.username === username) + 1;
+            }
+
+            getPlayerBestScore(username) {
+                const leaderboard = this.getAll();
+                const player = leaderboard.find(entry => entry.username === username);
+                return player ? player.score : 0;
+            }
+        }
+
+        // Instancias globales
+        const profile = new GameProfile();
+        const leaderboard = new Leaderboard();
+
+        // ==================== ELEMENTOS DEL DOM ====================
+        
+        const profileScreen = document.getElementById('profileScreen');
+        const leaderboardScreen = document.getElementById('leaderboardScreen');
+        const modeSelector = document.getElementById('modeSelector');
+        const gameContainer = document.getElementById('gameContainer');
+        const mobileControls = document.getElementById('mobileControls');
+
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+
+        const scoreEl = document.getElementById('score');
+        const highScoreEl = document.getElementById('highScore');
+        const gameOverModal = document.getElementById('gameOverModal');
+        const finalScoreEl = document.getElementById('finalScore');
+        const bestScoreEl = document.getElementById('bestScore');
+
+        // ==================== ELEMENTOS DE PERFIL ====================
+        
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        const avatarPreview = document.getElementById('avatarPreview');
+        const fileInput = document.getElementById('fileInput');
+        const urlInput = document.getElementById('urlInput');
+        const uploadBtn = document.getElementById('uploadBtn');
+        const cameraBtn = document.getElementById('cameraBtn');
+        const continueBtn = document.getElementById('continueBtn');
+        const leaderboardViewBtn = document.getElementById('leaderboardViewBtn');
+        const changeUserBtn = document.getElementById('changeUserBtn');
+        const backToProfileBtn = document.getElementById('backToProfileBtn');
+
+        // ==================== VARIABLES DE JUEGO ====================
+        
+        const gridSize = 20;
+        const tileCount = 15;
+        canvas.width = gridSize * tileCount;
+        canvas.height = gridSize * tileCount;
+
+        let snake = [{x: 7, y: 7}];
+        let food = {x: 5, y: 5};
+        let dx = 0;
+        let dy = 0;
+        let nextDx = 0;
+        let nextDy = 0;
+        let score = 0;
+        let highScore = 0;
+        let gameLoop;
+        let gameSpeed = 100;
+        let isMobileMode = false;
+        let gameActive = false;
+
+        // ==================== FUNCIONES DE PERFIL ====================
+        
+        function initializeProfile() {
+            if (profile.isProfileComplete()) {
+                usernameInput.value = profile.username;
+                showModeSelector();
+            }
+        }
+
+        uploadBtn.addEventListener('click', () => fileInput.click());
+
+        fileInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    profile.avatar = event.target.result;
+                    avatarPreview.innerHTML = `<img src="${profile.avatar}" alt="Avatar">`;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        urlInput.addEventListener('keyup', (e) => {
+            if (e.key === 'Enter' && urlInput.value.trim()) {
+                const url = urlInput.value.trim();
+                const img = new Image();
+                img.onload = () => {
+                    profile.avatar = url;
+                    avatarPreview.innerHTML = `<img src="${url}" alt="Avatar">`;
+                    urlInput.value = '';
+                };
+                img.onerror = () => {
+                    alert('❌ URL de imagen no válida');
+                };
+                img.src = url;
+            }
+        });
+
+        cameraBtn.addEventListener('click', () => {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+            input.capture = 'environment';
+            input.onchange = (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                        profile.avatar = event.target.result;
+                        avatarPreview.innerHTML = `<img src="${profile.avatar}" alt="Avatar">`;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            };
+            input.click();
+        });
+
+        continueBtn.addEventListener('click', () => {
+            const username = usernameInput.value.trim();
+            const password = passwordInput.value.trim();
+
+            // Validaciones
+            if (username.length === 0) {
+                alert('⚠️ Por favor ingresa tu nombre de usuario');
+                return;
+            }
+            if (username.length < 2) {
+                alert('⚠️ El nombre debe tener al menos 2 caracteres');
+                return;
+            }
+            if (password.length < 4) {
+                alert('⚠️ La contraseña debe tener al menos 4 caracteres');
+                return;
+            }
+            
+            // Validar contraseña si el usuario ya existe
+            const storedUsername = localStorage.getItem('gameUsername');
+            const storedPassword = localStorage.getItem('gamePassword');
+
+            if (storedUsername === username && storedPassword && storedPassword !== password) {
+                alert('❌ Contraseña incorrecta. Intenta de nuevo.');
+                passwordInput.value = '';
+                return;
+            }
+
+            profile.username = username;
+            profile.password = password;
+            profile.saveProfile();
+            highScore = leaderboard.getPlayerBestScore(username);
+            highScoreEl.textContent = highScore;
+            showModeSelector();
+        });
+
+        leaderboardViewBtn.addEventListener('click', showLeaderboard);
+        changeUserBtn.addEventListener('click', showProfileScreen);
+        backToProfileBtn.addEventListener('click', showProfileScreen);
+
+        function showProfileScreen() {
+            profileScreen.classList.remove('hidden');
+            leaderboardScreen.classList.add('hidden');
+            modeSelector.classList.add('hidden');
+            gameContainer.classList.add('hidden');
+            usernameInput.value = '';
+            passwordInput.value = '';
+            urlInput.value = '';
+            avatarPreview.innerHTML = '👤';
+            profile.avatar = '👤';
+        }
+
+        function showModeSelector() {
+            profileScreen.classList.add('hidden');
+            leaderboardScreen.classList.add('hidden');
+            modeSelector.classList.remove('hidden');
+            profile.updateUI();
+            document.getElementById('userRecordDisplay').textContent = `Récord: ${highScore}`;
+        }
+
+        function showLeaderboard() {
+            const leaderboardContainer = document.getElementById('leaderboardContainer');
+            const topScores = leaderboard.getTopScores(10);
+
+            if (topScores.length === 0) {
+                leaderboardContainer.innerHTML = '<div class="leaderboard-empty">🎮 Sé el primero en el ranking</div>';
+                leaderboardScreen.classList.remove('hidden');
+                profileScreen.classList.add('hidden');
+                return;
+            }
+
+            let html = '';
+            const medals = ['🥇', '🥈', '🥉'];
+
+            topScores.forEach((entry, index) => {
+                const isCurrentUser = entry.username === profile.username;
+                const medalClass = index < 3 ? (index === 0 ? 'gold' : index === 1 ? 'silver' : 'bronze') : '';
+                const rankClass = isCurrentUser ? 'current-user' : '';
+
+                html += `
+                    <div class="leaderboard-entry ${rankClass}">
+                        <div class="rank-number ${medalClass}">
+                            ${medals[index] || '#' + (index + 1)}
+                        </div>
+                        <div class="entry-avatar">
+                            ${typeof entry.avatar === 'string' && entry.avatar.startsWith('data:') || entry.avatar.startsWith('http') 
+                                ? `<img src="${entry.avatar}" alt="${entry.username}">` 
+                                : entry.avatar}
+                        </div>
+                        <div class="entry-info">
+                            <div class="entry-name">${entry.username}${isCurrentUser ? ' (Tú)' : ''}</div>
+                        </div>
+                        <div class="entry-score">${entry.score}</div>
+                    </div>
+                `;
+            });
+
+            leaderboardContainer.innerHTML = html;
+            leaderboardScreen.classList.remove('hidden');
+            profileScreen.classList.add('hidden');
+        }
+
+        // ==================== FUNCIONES DEL JUEGO ====================
+        
+        function startGame(mobile = false) {
+            isMobileMode = mobile;
+            gameSpeed = mobile ? 120 : 100;
+            
+            modeSelector.classList.add('hidden');
+            gameContainer.classList.remove('hidden');
+            
+            if (mobile) {
+                mobileControls.classList.add('active');
+            }
+
+            snake = [{x: 7, y: 7}];
+            dx = 0;
+            dy = 0;
+            nextDx = 0;
+            nextDy = 0;
+            score = 0;
+            scoreEl.textContent = score;
+            generateFood();
+            gameActive = true;
+            gameLoop = setInterval(drawGame, gameSpeed);
+        }
+
+        function drawGame() {
+            // Fondo
+            ctx.fillStyle = 'rgba(20, 30, 50, 0.2)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Dibujar cuadrícula (sutil)
+            ctx.strokeStyle = 'rgba(99, 102, 241, 0.05)';
+            ctx.lineWidth = 0.5;
+            for (let i = 0; i <= tileCount; i++) {
+                ctx.beginPath();
+                ctx.moveTo(i * gridSize, 0);
+                ctx.lineTo(i * gridSize, canvas.height);
+                ctx.stroke();
+                
+                ctx.beginPath();
+                ctx.moveTo(0, i * gridSize);
+                ctx.lineTo(canvas.width, i * gridSize);
+                ctx.stroke();
+            }
+
+            // Dibujar comida con brillo
+            const foodGradient = ctx.createRadialGradient(
+                food.x * gridSize + gridSize / 2, food.y * gridSize + gridSize / 2, 2,
+                food.x * gridSize + gridSize / 2, food.y * gridSize + gridSize / 2, gridSize
+            );
+            foodGradient.addColorStop(0, '#ff6b6b');
+            foodGradient.addColorStop(1, '#ff1744');
+            ctx.fillStyle = foodGradient;
+            ctx.fillRect(food.x * gridSize + 1, food.y * gridSize + 1, gridSize - 2, gridSize - 2);
+            ctx.shadowBlur = 15;
+            ctx.shadowColor = '#ff1744';
+
+            // Dibujar serpiente con degradado
+            snake.forEach((segment, index) => {
+                if (index === 0) {
+                    // Cabeza
+                    const headGradient = ctx.createRadialGradient(
+                        segment.x * gridSize + gridSize / 2, segment.y * gridSize + gridSize / 2, 2,
+                        segment.x * gridSize + gridSize / 2, segment.y * gridSize + gridSize / 2, gridSize
+                    );
+                    headGradient.addColorStop(0, '#00ff88');
+                    headGradient.addColorStop(1, '#00cc66');
+                    ctx.fillStyle = headGradient;
+                    ctx.shadowBlur = 20;
+                    ctx.shadowColor = '#00ff88';
+                } else {
+                    // Cuerpo con degradado
+                    const bodyGradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+                    bodyGradient.addColorStop(0, '#6366f1');
+                    bodyGradient.addColorStop(1, '#ec4899');
+                    ctx.fillStyle = bodyGradient;
+                    ctx.shadowBlur = 10;
+                    ctx.shadowColor = 'rgba(99, 102, 241, 0.5)';
+                }
+                ctx.fillRect(segment.x * gridSize + 1, segment.y * gridSize + 1, gridSize - 2, gridSize - 2);
+            });
+            ctx.shadowBlur = 0;
+
+            // Actualizar dirección
+            if (dx !== nextDx || dy !== nextDy) {
+                dx = nextDx;
+                dy = nextDy;
+            }
+
+            // Mover serpiente
+            if (dx !== 0 || dy !== 0) {
+                const head = {x: snake[0].x + dx, y: snake[0].y + dy};
+
+                // Verificar colisión con paredes
+                if (head.x < 0 || head.x >= tileCount || head.y < 0 || head.y >= tileCount) {
+                    endGame();
+                    return;
+                }
+
+                // Verificar colisión con cuerpo
+                if (snake.some(segment => segment.x === head.x && segment.y === head.y)) {
+                    endGame();
+                    return;
+                }
+
+                snake.unshift(head);
+
+                // Verificar si comió
+                if (head.x === food.x && head.y === food.y) {
+                    score++;
+                    scoreEl.textContent = score;
+                    if (score > highScore) {
+                        highScore = score;
+                        highScoreEl.textContent = highScore;
+                    }
+                    generateFood();
+                } else {
+                    snake.pop();
+                }
+            }
+        }
+
+        function generateFood() {
+            let newFood;
+            let validPosition = false;
+            
+            while (!validPosition) {
+                newFood = {
+                    x: Math.floor(Math.random() * tileCount),
+                    y: Math.floor(Math.random() * tileCount)
+                };
+                validPosition = !snake.some(segment => segment.x === newFood.x && segment.y === newFood.y);
+            }
+            food = newFood;
+        }
+
+        function changeDirection(newDx, newDy) {
+            // Evitar que se mueva en dirección opuesta
+            if ((dx === -newDx && dx !== 0) || (dy === -newDy && dy !== 0)) {
+                return;
+            }
+            nextDx = newDx;
+            nextDy = newDy;
+        }
+
+        function endGame() {
+            gameActive = false;
+            clearInterval(gameLoop);
+            
+            // Guardar puntuación en leaderboard
+            leaderboard.addScore(profile.username, score, profile.avatar);
+            
+            // Actualizar récord personal
+            highScore = Math.max(highScore, score);
+            
+            finalScoreEl.textContent = score;
+            bestScoreEl.textContent = highScore;
+            gameOverModal.classList.add('show');
+        }
+
+        function restartGame() {
+            gameOverModal.classList.remove('show');
+            startGame(isMobileMode);
+        }
+
+        function goToMenu() {
+            gameOverModal.classList.remove('show');
+            gameContainer.classList.add('hidden');
+            modeSelector.classList.remove('hidden');
+            mobileControls.classList.remove('active');
+            gameActive = false;
+            clearInterval(gameLoop);
+        }
+
+        // ==================== EVENT LISTENERS ====================
+        
+        // Selector de modo
+        document.getElementById('pcMode').addEventListener('click', () => startGame(false));
+        document.getElementById('mobileMode').addEventListener('click', () => startGame(true));
+
+        // Controles móviles
+        document.getElementById('btnUp').addEventListener('click', () => changeDirection(0, -1));
+        document.getElementById('btnDown').addEventListener('click', () => changeDirection(0, 1));
+        document.getElementById('btnLeft').addEventListener('click', () => changeDirection(-1, 0));
+        document.getElementById('btnRight').addEventListener('click', () => changeDirection(1, 0));
+
+        // Teclado (PC)
+        document.addEventListener('keydown', (e) => {
+            if (!gameActive) return;
+            switch(e.key) {
+                case 'ArrowUp': 
+                    e.preventDefault();
+                    changeDirection(0, -1); 
+                    break;
+                case 'ArrowDown': 
+                    e.preventDefault();
+                    changeDirection(0, 1); 
+                    break;
+                case 'ArrowLeft': 
+                    e.preventDefault();
+                    changeDirection(-1, 0); 
+                    break;
+                case 'ArrowRight': 
+                    e.preventDefault();
+                    changeDirection(1, 0); 
+                    break;
+            }
+        });
+
+        // Controles táctiles - Deslizamiento
+        let touchStartX = 0;
+        let touchStartY = 0;
+
+        canvas.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+        });
+
+        canvas.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            if (!gameActive) return;
+            
+            const touchEndX = e.changedTouches[0].clientX;
+            const touchEndY = e.changedTouches[0].clientY;
+            const diffX = touchEndX - touchStartX;
+            const diffY = touchEndY - touchStartY;
+            const threshold = 50;
+
+            if (Math.abs(diffX) > Math.abs(diffY)) {
+                if (Math.abs(diffX) > threshold) {
+                    changeDirection(diffX > 0 ? 1 : -1, 0);
+                }
+            } else {
+                if (Math.abs(diffY) > threshold) {
+                    changeDirection(0, diffY > 0 ? 1 : -1);
+                }
+            }
+        });
+
+        // Modal
+        document.getElementById('restartBtn').addEventListener('click', restartGame);
+        document.getElementById('menuBtn').addEventListener('click', goToMenu);
+        document.getElementById('backBtn').addEventListener('click', goToMenu);
+
+        // Inicializar
+        initializeProfile();
+    </script>
+</body>
+</html>
