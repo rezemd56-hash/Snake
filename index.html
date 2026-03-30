@@ -66,11 +66,6 @@
             margin-bottom: 10px;
         }
 
-        .profile-header p {
-            font-size: 1rem;
-            color: #94a3b8;
-        }
-
         .profile-form {
             background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(236, 72, 153, 0.1));
             border: 2px solid rgba(99, 102, 241, 0.3);
@@ -126,11 +121,6 @@
             font-weight: 600;
         }
 
-        .upload-btn:hover, .camera-btn:hover {
-            background: var(--primary);
-            transform: translateY(-2px);
-        }
-
         .form-group {
             display: flex;
             flex-direction: column;
@@ -140,9 +130,6 @@
         .form-group label {
             font-size: 0.9rem;
             color: #cbd5e1;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
         .form-group input {
@@ -151,22 +138,6 @@
             border: 1.5px solid rgba(99, 102, 241, 0.4);
             border-radius: 10px;
             color: white;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .form-group input:focus {
-            outline: none;
-            border-color: var(--primary);
-            background: rgba(15, 23, 42, 0.95);
-            box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
-        }
-
-        .profile-buttons {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 10px;
         }
 
         .start-btn {
@@ -175,218 +146,112 @@
             padding: 15px 25px;
             border-radius: 12px;
             color: white;
-            font-size: 1rem;
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s ease;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 5px 20px rgba(16, 185, 129, 0.3);
         }
 
-        .start-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(16, 185, 129, 0.5);
+        /* MENU DE AJUSTES (TUERCA) */
+        .settings-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
         }
 
-        .leaderboard-btn {
-            background: rgba(99, 102, 241, 0.3);
-            border: 2px solid var(--primary);
-            padding: 15px 25px;
-            border-radius: 12px;
+        .settings-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             color: white;
-            font-size: 1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .leaderboard-btn:hover {
-            background: var(--primary);
-            transform: translateY(-3px);
-        }
-
-        /* PANTALLA LEADERBOARD */
-        .leaderboard-screen {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 25px;
-            animation: slideIn 0.6s ease-out;
-            max-width: 700px;
-            width: 90%;
-            padding: 20px;
-        }
-
-        .leaderboard-screen.hidden {
-            display: none;
-        }
-
-        .leaderboard-header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .leaderboard-header h1 {
-            font-size: 2.5rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 10px;
-        }
-
-        .leaderboard-header p {
-            color: #94a3b8;
-        }
-
-        .leaderboard-container {
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(236, 72, 153, 0.1));
-            border: 2px solid rgba(99, 102, 241, 0.3);
-            border-radius: 20px;
-            padding: 20px;
-            width: 100%;
-            max-height: 500px;
-            overflow-y: auto;
-        }
-
-        .leaderboard-empty {
-            text-align: center;
-            padding: 40px 20px;
-            color: #94a3b8;
-            font-size: 1.1rem;
-        }
-
-        .leaderboard-entry {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 15px;
-            background: rgba(15, 23, 42, 0.5);
-            border-radius: 15px;
-            margin-bottom: 12px;
-            border-left: 4px solid var(--primary);
-            transition: all 0.3s ease;
-        }
-
-        .leaderboard-entry:hover {
-            background: rgba(15, 23, 42, 0.8);
-            transform: translateX(5px);
-        }
-
-        .leaderboard-entry.current-user {
-            border-left-color: var(--success);
-            background: rgba(16, 185, 129, 0.1);
-        }
-
-        .rank-number {
-            font-size: 1.5rem;
-            font-weight: 900;
-            width: 40px;
-            text-align: center;
-            color: var(--accent);
-        }
-
-        .rank-number.gold {
-            color: #ffd700;
-            font-size: 1.8rem;
-        }
-
-        .rank-number.silver {
-            color: #c0c0c0;
-            font-size: 1.8rem;
-        }
-
-        .rank-number.bronze {
-            color: #cd7f32;
-            font-size: 1.8rem;
-        }
-
-        .entry-avatar {
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            overflow: hidden;
-            border: 2px solid var(--primary);
-            flex-shrink: 0;
+            font-size: 1.5rem;
+            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(99, 102, 241, 0.2);
-            font-size: 1.5rem;
+            transition: 0.3s;
         }
 
-        .entry-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .settings-btn:hover { background: rgba(255, 255, 255, 0.2); transform: rotate(90deg); }
+
+        .settings-dropdown {
+            position: absolute;
+            top: 60px;
+            right: 0;
+            background: #1e293b;
+            border: 1px solid var(--primary);
+            border-radius: 15px;
+            width: 200px;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        .entry-info {
-            flex: 1;
-        }
+        .settings-dropdown.show { display: flex; }
 
-        .entry-name {
-            font-weight: 700;
-            font-size: 1.1rem;
+        .settings-option {
+            padding: 15px;
             color: white;
-            margin-bottom: 3px;
+            cursor: pointer;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: 0.3s;
+            font-size: 0.9rem;
         }
 
-        .entry-score {
-            font-size: 1.3rem;
-            font-weight: 900;
-            color: var(--accent);
-            text-align: right;
+        .settings-option:hover { background: var(--primary); }
+
+        /* MODAL DE CONTROLES */
+        .controls-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
         }
 
-        .leaderboard-footer {
+        .controls-content {
+            background: #0f172a;
+            padding: 30px;
+            border-radius: 20px;
+            border: 2px solid var(--primary);
+            width: 90%;
+            max-width: 400px;
+        }
+
+        .control-row {
             display: flex;
-            gap: 15px;
-            margin-top: 20px;
-            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
         }
 
-        /* PANTALLA DE INICIO - SELECTOR DE MODO */
+        .key-input {
+            background: #1e293b;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 8px;
+            width: 100px;
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* PANTALLA MODO JUEGO */
         .mode-selector {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             gap: 40px;
-            animation: fadeIn 0.6s ease-in;
             z-index: 100;
         }
 
-        .mode-selector.hidden {
-            display: none;
-        }
-
-        .game-title {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .game-title h1 {
-            font-size: 4rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: 0 20px 40px rgba(99, 102, 241, 0.3);
-            margin-bottom: 10px;
-            letter-spacing: -2px;
-        }
-
-        .game-title p {
-            font-size: 1.2rem;
-            color: #94a3b8;
-            font-weight: 300;
-        }
+        .mode-selector.hidden { display: none; }
 
         .user-info-bar {
             display: flex;
@@ -396,512 +261,53 @@
             background: rgba(99, 102, 241, 0.1);
             border-radius: 15px;
             border: 1px solid rgba(99, 102, 241, 0.3);
-            margin-bottom: 20px;
         }
 
         .user-avatar-small {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            overflow: hidden;
+            width: 50px; height: 50px;
+            border-radius: 50%; overflow: hidden;
             border: 2px solid var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(99, 102, 241, 0.2);
-            font-size: 1.5rem;
-            flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center;
+            background: rgba(99, 102, 241, 0.2); font-size: 1.5rem;
         }
 
-        .user-avatar-small img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+        .user-avatar-small img { width: 100%; height: 100%; object-fit: cover; }
 
-        .user-details {
-            flex: 1;
-        }
+        /* CANVAS Y JUEGO */
+        .game-container.hidden { display: none; }
+        canvas { border-radius: 18px; background: #0f172a; box-shadow: 0 0 30px var(--primary); }
 
-        .user-name {
-            font-weight: 700;
-            font-size: 1rem;
-            color: white;
-        }
-
-        .user-record {
-            font-size: 0.85rem;
-            color: #94a3b8;
-        }
-
-        .change-user-btn {
-            padding: 8px 15px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: white;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.85rem;
-        }
-
-        .change-user-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .mode-buttons {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            max-width: 600px;
-            width: 90%;
-        }
-
-        .mode-btn {
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(236, 72, 153, 0.2) 100%);
-            border: 2px solid rgba(99, 102, 241, 0.5);
-            border-radius: 20px;
-            padding: 40px 30px;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-            color: var(--light);
-            text-decoration: none;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .mode-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            transition: left 0.4s ease;
-            z-index: -1;
-        }
-
-        .mode-btn:hover {
-            transform: translateY(-10px);
-            border-color: var(--secondary);
-            box-shadow: 0 20px 50px rgba(99, 102, 241, 0.4);
-        }
-
-        .mode-btn:hover::before {
-            left: 0;
-        }
-
-        .mode-btn:hover .mode-icon {
-            transform: scale(1.2) rotate(10deg);
-        }
-
-        .mode-btn:hover .mode-text {
-            color: white;
-        }
-
-        .mode-icon {
-            font-size: 3.5rem;
-            transition: transform 0.4s ease;
-            filter: drop-shadow(0 5px 15px rgba(99, 102, 241, 0.3));
-        }
-
-        .mode-text {
-            text-align: center;
-            transition: color 0.4s ease;
-        }
-
-        .mode-text h2 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-
-        .mode-text p {
-            font-size: 0.95rem;
-            color: #cbd5e1;
-        }
-
-        /* CONTENEDOR PRINCIPAL DEL JUEGO */
-        .game-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 25px;
-            animation: slideIn 0.6s ease-out;
-        }
-
-        .game-container.hidden {
-            display: none;
-        }
-
-        .game-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            max-width: 600px;
-            padding: 20px;
-            background: rgba(99, 102, 241, 0.1);
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(99, 102, 241, 0.2);
-        }
-
-        .back-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-        }
-
-        .back-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateX(-5px);
-        }
-
-        .score-display {
-            text-align: center;
-            flex: 1;
-        }
-
-        .score-display h3 {
-            font-size: 0.9rem;
-            color: #94a3b8;
-            margin-bottom: 5px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .score-display .score-value {
-            font-size: 2rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .high-score {
-            text-align: right;
-        }
-
-        .high-score h3 {
-            font-size: 0.9rem;
-            color: #94a3b8;
-            margin-bottom: 5px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .high-score .score-value {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--accent);
-        }
-
-        .game-canvas-wrapper {
-            background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.95));
-            border-radius: 20px;
-            padding: 3px;
-            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.3);
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            backdrop-filter: blur(10px);
-        }
-
-        canvas {
-            display: block;
-            border-radius: 18px;
-            background: linear-gradient(135deg, rgba(30, 41, 59, 0.5), rgba(15, 23, 42, 0.8));
-        }
-
-        /* CONTROLES MÓVILES */
         .mobile-controls {
             display: none;
-            width: 100%;
-            max-width: 250px;
-            padding: 20px;
-        }
-
-        .mobile-controls.active {
-            display: grid;
-        }
-
-        .controls-grid {
-            display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            width: 100%;
+            gap: 10px;
+            margin-top: 20px;
         }
-
         .control-btn {
-            aspect-ratio: 1;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border: none;
-            border-radius: 15px;
-            color: white;
-            font-size: 1.8rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 0 5px 20px rgba(99, 102, 241, 0.3);
-            user-select: none;
-            -webkit-tap-highlight-color: transparent;
-            font-weight: bold;
+            width: 60px; height: 60px; background: var(--primary);
+            border: none; border-radius: 10px; color: white; font-size: 1.5rem;
         }
 
-        .control-btn:active {
-            transform: scale(0.85);
-            box-shadow: 0 2px 8px rgba(99, 102, 241, 0.5);
-        }
-
-        .control-btn.up { grid-column: 2; }
-        .control-btn.left { grid-column: 1; grid-row: 2; }
-        .control-btn.down { grid-column: 2; grid-row: 2; }
-        .control-btn.right { grid-column: 3; grid-row: 2; }
-
-        /* MODAL GAME OVER */
-        .game-over-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(5px);
-            z-index: 1000;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .game-over-modal.show {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .game-over-content {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            border-radius: 25px;
-            padding: 50px 40px;
-            text-align: center;
-            border: 2px solid rgba(99, 102, 241, 0.5);
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
-            max-width: 500px;
-            width: 90%;
-            animation: scaleIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .game-over-icon {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            animation: bounce 0.6s ease;
-        }
-
-        .game-over-content h2 {
-            font-size: 2.5rem;
-            font-weight: 900;
-            margin-bottom: 15px;
-            background: linear-gradient(135deg, var(--danger), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .game-over-stats {
-            margin: 30px 0;
-            padding: 25px;
-            background: rgba(99, 102, 241, 0.1);
-            border-radius: 15px;
-            border-left: 4px solid var(--primary);
-        }
-
-        .stat-line {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 10px 0;
-            font-size: 1.1rem;
-        }
-
-        .stat-line .label {
-            color: #94a3b8;
-        }
-
-        .stat-line .value {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--accent);
-        }
-
-        .game-over-buttons {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 30px;
-        }
-
-        .modal-btn {
-            padding: 15px 25px;
-            border: none;
-            border-radius: 12px;
-            font-size: 1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .restart-btn {
-            background: linear-gradient(135deg, var(--success), var(--primary));
-            color: white;
-            box-shadow: 0 5px 20px rgba(16, 185, 129, 0.3);
-        }
-
-        .restart-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(16, 185, 129, 0.5);
-        }
-
-        .menu-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1.5px solid rgba(99, 102, 241, 0.5);
-            color: white;
-        }
-
-        .menu-btn:hover {
-            background: rgba(99, 102, 241, 0.2);
-            transform: translateY(-3px);
-        }
-
-        /* ANIMACIONES */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes scaleIn {
-            from {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
-        }
-
-        /* INPUT FILE HIDDEN */
-        input[type="file"] {
-            display: none;
-        }
-
-        /* RESPONSIVE DESIGN */
-        @media (max-width: 768px) {
-            .game-title h1 {
-                font-size: 2.5rem;
-            }
-
-            .mode-buttons {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .mode-btn {
-                padding: 35px 20px;
-            }
-
-            canvas {
-                max-width: 90vw;
-                max-height: 90vw;
-            }
-
-            .game-over-content {
-                padding: 35px 25px;
-            }
-
-            .game-over-content h2 {
-                font-size: 1.8rem;
-            }
-
-            .game-over-buttons {
-                grid-template-columns: 1fr;
-            }
-
-            .profile-buttons {
-                grid-template-columns: 1fr;
-            }
-
-            .leaderboard-container {
-                max-height: 400px;
-            }
-        }
-
-        .speed-info {
-            font-size: 0.85rem;
-            color: #64748b;
-            margin-top: 10px;
-        }
-
-        /* SCROLLBAR PERSONALIZADO */
-        .leaderboard-container::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        .leaderboard-container::-webkit-scrollbar-track {
-            background: rgba(99, 102, 241, 0.1);
-            border-radius: 10px;
-        }
-
-        .leaderboard-container::-webkit-scrollbar-thumb {
-            background: rgba(99, 102, 241, 0.5);
-            border-radius: 10px;
-        }
-
-        .leaderboard-container::-webkit-scrollbar-thumb:hover {
-            background: var(--primary);
-        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body>
+
+    <div class="settings-container" id="settingsMenu" style="display: none;">
+        <button class="settings-btn" onclick="toggleSettings()">⚙️</button>
+        <div class="settings-dropdown" id="settingsDropdown">
+            <div class="settings-option" onclick="viewProfile()">👤 Ver Perfil</div>
+            <div class="settings-option" onclick="editProfile()">✏️ Editar Perfil</div>
+            <div class="settings-option" onclick="showControlsConfig()">⌨️ Controls (PC)</div>
+            <div class="settings-option" onclick="logout()" style="color: var(--danger);">🚪 Cerrar Sesión</div>
+        </div>
+    </div>
+
     <div class="profile-screen" id="profileScreen">
         <div class="profile-header">
-            <h1>🐍 SNAKE V1.2</h1>
+            <h1>🐍 SNAKE V1.3</h1>
             <p>Configura tu perfil para jugar</p>
         </div>
-
         <div class="profile-form">
             <div class="avatar-upload">
                 <div class="avatar-preview" id="avatarPreview">👤</div>
@@ -909,39 +315,17 @@
                     <button class="upload-btn" id="uploadBtn">📤 Subir Foto</button>
                     <button class="camera-btn" id="cameraBtn">📷 Cámara</button>
                 </div>
-                <input type="file" id="fileInput" accept="image/*">
-                <input type="text" id="urlInput" placeholder="O pega URL de imagen...">
+                <input type="file" id="fileInput" accept="image/*" style="display:none">
             </div>
-
             <div class="form-group">
-                <label for="username">Nombre de Usuario</label>
-                <input type="text" id="username" placeholder="Tu nombre de jugador..." maxlength="20">
+                <label>Nombre de Usuario</label>
+                <input type="text" id="username" placeholder="Tu nombre...">
             </div>
-
             <div class="form-group">
-                <label for="password">🔐 Contraseña</label>
-                <input type="password" id="password" placeholder="Tu contraseña (mín. 4 caracteres)..." maxlength="30">
+                <label>Contraseña</label>
+                <input type="password" id="password" placeholder="Tu contraseña...">
             </div>
-
-            <div class="profile-buttons">
-                <button class="start-btn" id="continueBtn">Continuar</button>
-                <button class="leaderboard-btn" id="leaderboardViewBtn">📊 Top 10</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="leaderboard-screen hidden" id="leaderboardScreen">
-        <div class="leaderboard-header">
-            <h1>🏆 RANKING GLOBAL</h1>
-            <p>Los mejores jugadores</p>
-        </div>
-
-        <div class="leaderboard-container" id="leaderboardContainer">
-            <div class="leaderboard-empty">Cargando ranking...</div>
-        </div>
-
-        <div class="leaderboard-footer">
-            <button class="start-btn" id="backToProfileBtn" style="flex: 1;">← Volver</button>
+            <button class="start-btn" id="continueBtn">Guardar y Continuar</button>
         </div>
     </div>
 
@@ -952,633 +336,212 @@
                 <div class="user-name" id="userNameDisplay">Jugador</div>
                 <div class="user-record" id="userRecordDisplay">Récord: 0</div>
             </div>
-            <button class="change-user-btn" id="changeUserBtn">Cambiar Perfil</button>
         </div>
-
-        <div class="game-title">
-            <h1>🐍 SNAKE V1.3</h1>
-            <p>Elige tu modo de juego</p>
-        </div>
-
-        <div class="mode-buttons">
-            <button class="mode-btn" id="pcMode">
-                <div class="mode-icon">🖥️</div>
-                <div class="mode-text">
-                    <h2>Modo PC</h2>
-                    <p>Controles con teclado</p>
-                    <div class="speed-info">⚡ Velocidad Rápida</div>
-                </div>
-            </button>
-            <button class="mode-btn" id="mobileMode">
-                <div class="mode-icon">📱</div>
-                <div class="mode-text">
-                    <h2>Modo Móvil</h2>
-                    <p>Botones táctiles</p>
-                    <div class="speed-info">🎮 Velocidad Adaptada</div>
-                </div>
-            </button>
+        <h1>Elige tu modo</h1>
+        <div style="display:flex; gap:20px;">
+            <button class="start-btn" onclick="startGame(false)">🖥️ MODO PC</button>
+            <button class="start-btn" onclick="startGame(true)" style="background:var(--secondary)">📱 MODO MÓVIL</button>
         </div>
     </div>
 
     <div class="game-container hidden" id="gameContainer">
-        <div class="game-header">
-            <button class="back-btn" id="backBtn">← Volver</button>
-            <div class="score-display">
-                <h3>Puntuación</h3>
-                <div class="score-value" id="score">0</div>
-            </div>
-            <div class="high-score">
-                <h3>Récord</h3>
-                <div class="score-value" id="highScore">0</div>
-            </div>
+        <div style="text-align:center; margin-bottom:10px;">
+            <span id="score">Puntos: 0</span> | <span id="highScore">Récord: 0</span>
         </div>
-
-        <div class="game-canvas-wrapper">
-            <canvas id="gameCanvas"></canvas>
-        </div>
-
+        <canvas id="gameCanvas"></canvas>
         <div class="mobile-controls" id="mobileControls">
-            <div class="controls-grid">
-                <button class="control-btn up" id="btnUp">▲</button>
-                <button class="control-btn left" id="btnLeft">◄</button>
-                <button class="control-btn down" id="btnDown">▼</button>
-                <button class="control-btn right" id="btnRight">►</button>
-            </div>
+            <button class="control-btn" style="grid-column:2" onclick="changeDirection(0,-1)">▲</button>
+            <button class="control-btn" style="grid-column:1" onclick="changeDirection(-1,0)">◀</button>
+            <button class="control-btn" style="grid-column:2" onclick="changeDirection(0,1)">▼</button>
+            <button class="control-btn" style="grid-column:3" onclick="changeDirection(1,0)">▶</button>
         </div>
     </div>
 
-    <div class="game-over-modal" id="gameOverModal">
-        <div class="game-over-content">
-            <div class="game-over-icon">💀</div>
-            <h2>¡Juego Terminado!</h2>
-            <div class="game-over-stats">
-                <div class="stat-line">
-                    <span class="label">Puntuación Final:</span>
-                    <span class="value" id="finalScore">0</span>
-                </div>
-                <div class="stat-line">
-                    <span class="label">Tu Récord:</span>
-                    <span class="value" id="bestScore">0</span>
-                </div>
-            </div>
-            <div class="game-over-buttons">
-                <button class="modal-btn restart-btn" id="restartBtn">Jugar de Nuevo</button>
-                <button class="modal-btn menu-btn" id="menuBtn">Menú Principal</button>
-            </div>
+    <div class="controls-modal" id="controlsModal">
+        <div class="controls-content">
+            <h3>Configurar Teclas</h3>
+            <p style="font-size:0.8rem; color:#94a3b8; margin-bottom:15px;">Haz clic en el cuadro y presiona la tecla</p>
+            <div class="control-row"><span>Arriba:</span> <div class="key-input" id="keyUp" onclick="listenKey('Up')">ArrowUp</div></div>
+            <div class="control-row"><span>Abajo:</span> <div class="key-input" id="keyDown" onclick="listenKey('Down')">ArrowDown</div></div>
+            <div class="control-row"><span>Izquierda:</span> <div class="key-input" id="keyLeft" onclick="listenKey('Left')">ArrowLeft</div></div>
+            <div class="control-row"><span>Derecha:</span> <div class="key-input" id="keyRight" onclick="listenKey('Right')">ArrowRight</div></div>
+            <button class="start-btn" style="width:100%" onclick="closeControls()">Guardar</button>
         </div>
     </div>
 
     <script>
-        // ==================== SISTEMA DE PERFIL Y LEADERBOARD ====================
-        
-        class GameProfile {
-            constructor() {
-                this.username = localStorage.getItem('gameUsername') || '';
-                this.avatar = localStorage.getItem('gameAvatar') || '👤';
-                this.password = localStorage.getItem('gamePassword') || '';
-                this.loadProfile();
+        // --- ESTADO GLOBAL ---
+        let profile = {
+            username: localStorage.getItem('s_user') || '',
+            avatar: localStorage.getItem('s_avatar') || '👤',
+            password: localStorage.getItem('s_pass') || '',
+            controls: JSON.parse(localStorage.getItem('s_keys')) || {
+                Up: 'ArrowUp', Down: 'ArrowDown', Left: 'ArrowLeft', Right: 'ArrowRight'
             }
+        };
 
-            saveProfile() {
-                localStorage.setItem('gameUsername', this.username);
-                localStorage.setItem('gameAvatar', this.avatar);
-                localStorage.setItem('gamePassword', this.password);
-            }
-
-            loadProfile() {
-                if (this.username && this.avatar !== '👤') {
-                    this.updateUI();
-                }
-            }
-
-            updateUI() {
-                document.getElementById('userNameDisplay').textContent = this.username;
-                document.getElementById('userAvatarSmall').innerHTML = this.avatar;
-                document.getElementById('avatarPreview').innerHTML = this.avatar;
-            }
-
-            isProfileComplete() {
-                return this.username.trim().length > 0 && this.password.length > 0;
-            }
-        }
-
-        class Leaderboard {
-            constructor() {
-                this.key = 'snakeLeaderboard';
-            }
-
-            addScore(username, score, avatar) {
-                let leaderboard = this.getAll();
-                
-                // Buscar si el usuario ya existe
-                let existingIndex = leaderboard.findIndex(entry => entry.username === username);
-                
-                if (existingIndex !== -1) {
-                    // Actualizar si es mayor puntuación
-                    if (score > leaderboard[existingIndex].score) {
-                        leaderboard[existingIndex].score = score;
-                        leaderboard[existingIndex].avatar = avatar;
-                    }
+        // --- FUNCIONES PERFIL ---
+        function updateAvatars() {
+            const containers = [document.getElementById('avatarPreview'), document.getElementById('userAvatarSmall')];
+            containers.forEach(div => {
+                if(profile.avatar.startsWith('data:image') || profile.avatar.startsWith('http')) {
+                    div.innerHTML = `<img src="${profile.avatar}">`;
                 } else {
-                    // Añadir nuevo usuario
-                    leaderboard.push({
-                        username,
-                        score,
-                        avatar,
-                        date: new Date().toISOString()
-                    });
+                    div.innerHTML = profile.avatar;
                 }
-
-                // Ordenar y guardar
-                leaderboard.sort((a, b) => b.score - a.score);
-                localStorage.setItem(this.key, JSON.stringify(leaderboard));
-                
-                return leaderboard;
-            }
-
-            getAll() {
-                const data = localStorage.getItem(this.key);
-                return data ? JSON.parse(data) : [];
-            }
-
-            getTopScores(limit = 10) {
-                return this.getAll().slice(0, limit);
-            }
-
-            getPlayerRank(username) {
-                const leaderboard = this.getAll();
-                return leaderboard.findIndex(entry => entry.username === username) + 1;
-            }
-
-            getPlayerBestScore(username) {
-                const leaderboard = this.getAll();
-                const player = leaderboard.find(entry => entry.username === username);
-                return player ? player.score : 0;
-            }
+            });
+            document.getElementById('userNameDisplay').textContent = profile.username;
         }
 
-        // Instancias globales
-        const profile = new GameProfile();
-        const leaderboard = new Leaderboard();
+        document.getElementById('uploadBtn').onclick = () => document.getElementById('fileInput').click();
+        document.getElementById('fileInput').onchange = (e) => {
+            const reader = new FileReader();
+            reader.onload = (ev) => {
+                profile.avatar = ev.target.result;
+                updateAvatars(); // Cambio automático
+                localStorage.setItem('s_avatar', profile.avatar);
+            };
+            reader.readAsDataURL(e.target.files[0]);
+        };
 
-        // ==================== ELEMENTOS DEL DOM ====================
-        
-        const profileScreen = document.getElementById('profileScreen');
-        const leaderboardScreen = document.getElementById('leaderboardScreen');
-        const modeSelector = document.getElementById('modeSelector');
-        const gameContainer = document.getElementById('gameContainer');
-        const mobileControls = document.getElementById('mobileControls');
+        document.getElementById('continueBtn').onclick = () => {
+            profile.username = document.getElementById('username').value;
+            profile.password = document.getElementById('password').value;
+            if(!profile.username || !profile.password) return alert("Rellena todo");
+            localStorage.setItem('s_user', profile.username);
+            localStorage.setItem('s_pass', profile.password);
+            localStorage.setItem('s_avatar', profile.avatar);
+            showMenu();
+        };
 
+        function showMenu() {
+            document.getElementById('profileScreen').classList.add('hidden');
+            document.getElementById('modeSelector').classList.remove('hidden');
+            document.getElementById('settingsMenu').style.display = 'block';
+            updateAvatars();
+        }
+
+        // --- SISTEMA DE AJUSTES ---
+        function toggleSettings() {
+            document.getElementById('settingsDropdown').classList.toggle('show');
+        }
+
+        function logout() {
+            localStorage.clear();
+            location.reload();
+        }
+
+        function viewProfile() {
+            alert(`Jugador: ${profile.username}\nContraseña: ${profile.password}`);
+            toggleSettings();
+        }
+
+        function editProfile() {
+            document.getElementById('modeSelector').classList.add('hidden');
+            document.getElementById('gameContainer').classList.add('hidden');
+            document.getElementById('profileScreen').classList.remove('hidden');
+            document.getElementById('username').value = profile.username;
+            document.getElementById('password').value = profile.password;
+            toggleSettings();
+        }
+
+        // --- CONFIGURACIÓN DE CONTROLES ---
+        let currentListening = null;
+        function showControlsConfig() {
+            document.getElementById('controlsModal').style.display = 'flex';
+            ['Up','Down','Left','Right'].forEach(dir => {
+                document.getElementById('key'+dir).textContent = profile.controls[dir];
+            });
+            toggleSettings();
+        }
+
+        function listenKey(dir) {
+            currentListening = dir;
+            document.getElementById('key'+dir).textContent = "...";
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if(currentListening) {
+                profile.controls[currentListening] = e.key;
+                document.getElementById('key'+currentListening).textContent = e.key;
+                currentListening = null;
+                localStorage.setItem('s_keys', JSON.stringify(profile.controls));
+            }
+            // Control del juego
+            if(gameActive) {
+                if(e.key === profile.controls.Up) changeDirection(0,-1);
+                if(e.key === profile.controls.Down) changeDirection(0,1);
+                if(e.key === profile.controls.Left) changeDirection(-1,0);
+                if(e.key === profile.controls.Right) changeDirection(1,0);
+            }
+        });
+
+        function closeControls() {
+            document.getElementById('controlsModal').style.display = 'none';
+        }
+
+        // --- LÓGICA DEL JUEGO (SNAKE) ---
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
+        const gridSize = 20; const tileCount = 15;
+        canvas.width = canvas.height = gridSize * tileCount;
 
-        const scoreEl = document.getElementById('score');
-        const highScoreEl = document.getElementById('highScore');
-        const gameOverModal = document.getElementById('gameOverModal');
-        const finalScoreEl = document.getElementById('finalScore');
-        const bestScoreEl = document.getElementById('bestScore');
+        let snake = [{x:7, y:7}]; let food = {x:5, y:5};
+        let dx=0, dy=0; let score=0; let gameActive=false;
 
-        // ==================== ELEMENTOS DE PERFIL ====================
-        
-        const usernameInput = document.getElementById('username');
-        const passwordInput = document.getElementById('password');
-        const avatarPreview = document.getElementById('avatarPreview');
-        const fileInput = document.getElementById('fileInput');
-        const urlInput = document.getElementById('urlInput');
-        const uploadBtn = document.getElementById('uploadBtn');
-        const cameraBtn = document.getElementById('cameraBtn');
-        const continueBtn = document.getElementById('continueBtn');
-        const leaderboardViewBtn = document.getElementById('leaderboardViewBtn');
-        const changeUserBtn = document.getElementById('changeUserBtn');
-        const backToProfileBtn = document.getElementById('backToProfileBtn');
-
-        // ==================== VARIABLES DE JUEGO ====================
-        
-        const gridSize = 20;
-        const tileCount = 15;
-        canvas.width = gridSize * tileCount;
-        canvas.height = gridSize * tileCount;
-
-        let snake = [{x: 7, y: 7}];
-        let food = {x: 5, y: 5};
-        let dx = 0;
-        let dy = 0;
-        let nextDx = 0;
-        let nextDy = 0;
-        let score = 0;
-        let highScore = 0;
-        let gameLoop;
-        let gameSpeed = 100;
-        let isMobileMode = false;
-        let gameActive = false;
-
-        // ==================== FUNCIONES DE PERFIL ====================
-        
-        function initializeProfile() {
-            if (profile.isProfileComplete()) {
-                usernameInput.value = profile.username;
-                showModeSelector();
-            }
+        function startGame(mobile) {
+            document.getElementById('modeSelector').classList.add('hidden');
+            document.getElementById('gameContainer').classList.remove('hidden');
+            if(mobile) document.getElementById('mobileControls').style.display = 'grid';
+            score=0; snake=[{x:7, y:7}]; dx=0; dy=0;
+            gameActive=true;
+            if(window.loop) clearInterval(window.loop);
+            window.loop = setInterval(draw, 100);
         }
 
-        uploadBtn.addEventListener('click', () => fileInput.click());
+        function changeDirection(nx, ny) {
+            if(nx === -dx && nx !== 0) return;
+            if(ny === -dy && ny !== 0) return;
+            dx = nx; dy = ny;
+        }
 
-        fileInput.addEventListener('change', (e) => {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = (event) => {
-                    profile.avatar = event.target.result;
-                    avatarPreview.innerHTML = `<img src="${profile.avatar}" alt="Avatar">`;
-                };
-                reader.readAsDataURL(file);
-            }
-        });
+        function draw() {
+            ctx.fillStyle = "#0f172a";
+            ctx.fillRect(0,0,canvas.width, canvas.height);
 
-        urlInput.addEventListener('keyup', (e) => {
-            if (e.key === 'Enter' && urlInput.value.trim()) {
-                const url = urlInput.value.trim();
-                const img = new Image();
-                img.onload = () => {
-                    profile.avatar = url;
-                    avatarPreview.innerHTML = `<img src="${url}" alt="Avatar">`;
-                    urlInput.value = '';
-                };
-                img.onerror = () => {
-                    alert('❌ URL de imagen no válida');
-                };
-                img.src = url;
-            }
-        });
+            ctx.fillStyle = "red";
+            ctx.fillRect(food.x*gridSize, food.y*gridSize, gridSize-2, gridSize-2);
 
-        cameraBtn.addEventListener('click', () => {
-            const input = document.createElement('input');
-            input.type = 'file';
-            input.accept = 'image/*';
-            input.capture = 'environment';
-            input.onchange = (e) => {
-                const file = e.target.files[0];
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = (event) => {
-                        profile.avatar = event.target.result;
-                        avatarPreview.innerHTML = `<img src="${profile.avatar}" alt="Avatar">`;
-                    };
-                    reader.readAsDataURL(file);
-                }
-            };
-            input.click();
-        });
+            ctx.fillStyle = "#6366f1";
+            snake.forEach(s => ctx.fillRect(s.x*gridSize, s.y*gridSize, gridSize-2, gridSize-2));
 
-        continueBtn.addEventListener('click', () => {
-            const username = usernameInput.value.trim();
-            const password = passwordInput.value.trim();
+            if(dx===0 && dy===0) return;
 
-            // Validaciones
-            if (username.length === 0) {
-                alert('⚠️ Por favor ingresa tu nombre de usuario');
-                return;
-            }
-            if (username.length < 2) {
-                alert('⚠️ El nombre debe tener al menos 2 caracteres');
-                return;
-            }
-            if (password.length < 4) {
-                alert('⚠️ La contraseña debe tener al menos 4 caracteres');
-                return;
-            }
-            
-            // Validar contraseña si el usuario ya existe
-            const storedUsername = localStorage.getItem('gameUsername');
-            const storedPassword = localStorage.getItem('gamePassword');
+            let head = {x: snake[0].x + dx, y: snake[0].y + dy};
 
-            if (storedUsername === username && storedPassword && storedPassword !== password) {
-                alert('❌ Contraseña incorrecta. Intenta de nuevo.');
-                passwordInput.value = '';
+            if(head.x < 0 || head.x >= tileCount || head.y < 0 || head.y >= tileCount || snake.some(s => s.x === head.x && s.y === head.y)) {
+                gameActive = false;
+                clearInterval(window.loop);
+                alert("Game Over! Puntos: " + score);
+                document.getElementById('gameContainer').classList.add('hidden');
+                document.getElementById('modeSelector').classList.remove('hidden');
                 return;
             }
 
-            profile.username = username;
-            profile.password = password;
-            profile.saveProfile();
-            highScore = leaderboard.getPlayerBestScore(username);
-            highScoreEl.textContent = highScore;
-            showModeSelector();
-        });
-
-        leaderboardViewBtn.addEventListener('click', showLeaderboard);
-        changeUserBtn.addEventListener('click', showProfileScreen);
-        backToProfileBtn.addEventListener('click', showProfileScreen);
-
-        function showProfileScreen() {
-            profileScreen.classList.remove('hidden');
-            leaderboardScreen.classList.add('hidden');
-            modeSelector.classList.add('hidden');
-            gameContainer.classList.add('hidden');
-            usernameInput.value = '';
-            passwordInput.value = '';
-            urlInput.value = '';
-            avatarPreview.innerHTML = '👤';
-            profile.avatar = '👤';
-        }
-
-        function showModeSelector() {
-            profileScreen.classList.add('hidden');
-            leaderboardScreen.classList.add('hidden');
-            modeSelector.classList.remove('hidden');
-            profile.updateUI();
-            document.getElementById('userRecordDisplay').textContent = `Récord: ${highScore}`;
-        }
-
-        function showLeaderboard() {
-            const leaderboardContainer = document.getElementById('leaderboardContainer');
-            const topScores = leaderboard.getTopScores(10);
-
-            if (topScores.length === 0) {
-                leaderboardContainer.innerHTML = '<div class="leaderboard-empty">🎮 Sé el primero en el ranking</div>';
-                leaderboardScreen.classList.remove('hidden');
-                profileScreen.classList.add('hidden');
-                return;
-            }
-
-            let html = '';
-            const medals = ['🥇', '🥈', '🥉'];
-
-            topScores.forEach((entry, index) => {
-                const isCurrentUser = entry.username === profile.username;
-                const medalClass = index < 3 ? (index === 0 ? 'gold' : index === 1 ? 'silver' : 'bronze') : '';
-                const rankClass = isCurrentUser ? 'current-user' : '';
-
-                html += `
-                    <div class="leaderboard-entry ${rankClass}">
-                        <div class="rank-number ${medalClass}">
-                            ${medals[index] || '#' + (index + 1)}
-                        </div>
-                        <div class="entry-avatar">
-                            ${typeof entry.avatar === 'string' && entry.avatar.startsWith('data:') || entry.avatar.startsWith('http') 
-                                ? `<img src="${entry.avatar}" alt="${entry.username}">` 
-                                : entry.avatar}
-                        </div>
-                        <div class="entry-info">
-                            <div class="entry-name">${entry.username}${isCurrentUser ? ' (Tú)' : ''}</div>
-                        </div>
-                        <div class="entry-score">${entry.score}</div>
-                    </div>
-                `;
-            });
-
-            leaderboardContainer.innerHTML = html;
-            leaderboardScreen.classList.remove('hidden');
-            profileScreen.classList.add('hidden');
-        }
-
-        // ==================== FUNCIONES DEL JUEGO ====================
-        
-        function startGame(mobile = false) {
-            isMobileMode = mobile;
-            gameSpeed = mobile ? 120 : 100;
-            
-            modeSelector.classList.add('hidden');
-            gameContainer.classList.remove('hidden');
-            
-            if (mobile) {
-                mobileControls.classList.add('active');
-            }
-
-            snake = [{x: 7, y: 7}];
-            dx = 0;
-            dy = 0;
-            nextDx = 0;
-            nextDy = 0;
-            score = 0;
-            scoreEl.textContent = score;
-            generateFood();
-            gameActive = true;
-            gameLoop = setInterval(drawGame, gameSpeed);
-        }
-
-        function drawGame() {
-            // Fondo
-            ctx.fillStyle = 'rgba(20, 30, 50, 0.2)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            // Dibujar cuadrícula (sutil)
-            ctx.strokeStyle = 'rgba(99, 102, 241, 0.05)';
-            ctx.lineWidth = 0.5;
-            for (let i = 0; i <= tileCount; i++) {
-                ctx.beginPath();
-                ctx.moveTo(i * gridSize, 0);
-                ctx.lineTo(i * gridSize, canvas.height);
-                ctx.stroke();
-                
-                ctx.beginPath();
-                ctx.moveTo(0, i * gridSize);
-                ctx.lineTo(canvas.width, i * gridSize);
-                ctx.stroke();
-            }
-
-            // Dibujar comida con brillo
-            const foodGradient = ctx.createRadialGradient(
-                food.x * gridSize + gridSize / 2, food.y * gridSize + gridSize / 2, 2,
-                food.x * gridSize + gridSize / 2, food.y * gridSize + gridSize / 2, gridSize
-            );
-            foodGradient.addColorStop(0, '#ff6b6b');
-            foodGradient.addColorStop(1, '#ff1744');
-            ctx.fillStyle = foodGradient;
-            ctx.fillRect(food.x * gridSize + 1, food.y * gridSize + 1, gridSize - 2, gridSize - 2);
-            ctx.shadowBlur = 15;
-            ctx.shadowColor = '#ff1744';
-
-            // Dibujar serpiente con degradado
-            snake.forEach((segment, index) => {
-                if (index === 0) {
-                    // Cabeza
-                    const headGradient = ctx.createRadialGradient(
-                        segment.x * gridSize + gridSize / 2, segment.y * gridSize + gridSize / 2, 2,
-                        segment.x * gridSize + gridSize / 2, segment.y * gridSize + gridSize / 2, gridSize
-                    );
-                    headGradient.addColorStop(0, '#00ff88');
-                    headGradient.addColorStop(1, '#00cc66');
-                    ctx.fillStyle = headGradient;
-                    ctx.shadowBlur = 20;
-                    ctx.shadowColor = '#00ff88';
-                } else {
-                    // Cuerpo con degradado
-                    const bodyGradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-                    bodyGradient.addColorStop(0, '#6366f1');
-                    bodyGradient.addColorStop(1, '#ec4899');
-                    ctx.fillStyle = bodyGradient;
-                    ctx.shadowBlur = 10;
-                    ctx.shadowColor = 'rgba(99, 102, 241, 0.5)';
-                }
-                ctx.fillRect(segment.x * gridSize + 1, segment.y * gridSize + 1, gridSize - 2, gridSize - 2);
-            });
-            ctx.shadowBlur = 0;
-
-            // Actualizar dirección
-            if (dx !== nextDx || dy !== nextDy) {
-                dx = nextDx;
-                dy = nextDy;
-            }
-
-            // Mover serpiente
-            if (dx !== 0 || dy !== 0) {
-                const head = {x: snake[0].x + dx, y: snake[0].y + dy};
-
-                // Verificar colisión con paredes
-                if (head.x < 0 || head.x >= tileCount || head.y < 0 || head.y >= tileCount) {
-                    endGame();
-                    return;
-                }
-
-                // Verificar colisión con cuerpo
-                if (snake.some(segment => segment.x === head.x && segment.y === head.y)) {
-                    endGame();
-                    return;
-                }
-
-                snake.unshift(head);
-
-                // Verificar si comió
-                if (head.x === food.x && head.y === food.y) {
-                    score++;
-                    scoreEl.textContent = score;
-                    if (score > highScore) {
-                        highScore = score;
-                        highScoreEl.textContent = highScore;
-                    }
-                    generateFood();
-                } else {
-                    snake.pop();
-                }
-            }
-        }
-
-        function generateFood() {
-            let newFood;
-            let validPosition = false;
-            
-            while (!validPosition) {
-                newFood = {
-                    x: Math.floor(Math.random() * tileCount),
-                    y: Math.floor(Math.random() * tileCount)
-                };
-                validPosition = !snake.some(segment => segment.x === newFood.x && segment.y === newFood.y);
-            }
-            food = newFood;
-        }
-
-        function changeDirection(newDx, newDy) {
-            // Evitar que se mueva en dirección opuesta
-            if ((dx === -newDx && dx !== 0) || (dy === -newDy && dy !== 0)) {
-                return;
-            }
-            nextDx = newDx;
-            nextDy = newDy;
-        }
-
-        function endGame() {
-            gameActive = false;
-            clearInterval(gameLoop);
-            
-            // Guardar puntuación en leaderboard
-            leaderboard.addScore(profile.username, score, profile.avatar);
-            
-            // Actualizar récord personal
-            highScore = Math.max(highScore, score);
-            
-            finalScoreEl.textContent = score;
-            bestScoreEl.textContent = highScore;
-            gameOverModal.classList.add('show');
-        }
-
-        function restartGame() {
-            gameOverModal.classList.remove('show');
-            startGame(isMobileMode);
-        }
-
-        function goToMenu() {
-            gameOverModal.classList.remove('show');
-            gameContainer.classList.add('hidden');
-            modeSelector.classList.remove('hidden');
-            mobileControls.classList.remove('active');
-            gameActive = false;
-            clearInterval(gameLoop);
-        }
-
-        // ==================== EVENT LISTENERS ====================
-        
-        // Selector de modo
-        document.getElementById('pcMode').addEventListener('click', () => startGame(false));
-        document.getElementById('mobileMode').addEventListener('click', () => startGame(true));
-
-        // Controles móviles
-        document.getElementById('btnUp').addEventListener('click', () => changeDirection(0, -1));
-        document.getElementById('btnDown').addEventListener('click', () => changeDirection(0, 1));
-        document.getElementById('btnLeft').addEventListener('click', () => changeDirection(-1, 0));
-        document.getElementById('btnRight').addEventListener('click', () => changeDirection(1, 0));
-
-        // Teclado (PC)
-        document.addEventListener('keydown', (e) => {
-            if (!gameActive) return;
-            switch(e.key) {
-                case 'ArrowUp': 
-                    e.preventDefault();
-                    changeDirection(0, -1); 
-                    break;
-                case 'ArrowDown': 
-                    e.preventDefault();
-                    changeDirection(0, 1); 
-                    break;
-                case 'ArrowLeft': 
-                    e.preventDefault();
-                    changeDirection(-1, 0); 
-                    break;
-                case 'ArrowRight': 
-                    e.preventDefault();
-                    changeDirection(1, 0); 
-                    break;
-            }
-        });
-
-        // Controles táctiles - Deslizamiento
-        let touchStartX = 0;
-        let touchStartY = 0;
-
-        canvas.addEventListener('touchstart', (e) => {
-            e.preventDefault();
-            touchStartX = e.touches[0].clientX;
-            touchStartY = e.touches[0].clientY;
-        });
-
-        canvas.addEventListener('touchend', (e) => {
-            e.preventDefault();
-            if (!gameActive) return;
-            
-            const touchEndX = e.changedTouches[0].clientX;
-            const touchEndY = e.changedTouches[0].clientY;
-            const diffX = touchEndX - touchStartX;
-            const diffY = touchEndY - touchStartY;
-            const threshold = 50;
-
-            if (Math.abs(diffX) > Math.abs(diffY)) {
-                if (Math.abs(diffX) > threshold) {
-                    changeDirection(diffX > 0 ? 1 : -1, 0);
-                }
+            snake.unshift(head);
+            if(head.x === food.x && head.y === food.y) {
+                score++;
+                document.getElementById('score').textContent = "Puntos: " + score;
+                food = {x: Math.floor(Math.random()*tileCount), y: Math.floor(Math.random()*tileCount)};
             } else {
-                if (Math.abs(diffY) > threshold) {
-                    changeDirection(0, diffY > 0 ? 1 : -1);
-                }
+                snake.pop();
             }
-        });
+        }
 
-        // Modal
-        document.getElementById('restartBtn').addEventListener('click', restartGame);
-        document.getElementById('menuBtn').addEventListener('click', goToMenu);
-        document.getElementById('backBtn').addEventListener('click', goToMenu);
-
-        // Inicializar
-        initializeProfile();
+        // Inicializar si ya existe sesión
+        if(profile.username) {
+            showMenu();
+        }
     </script>
 </body>
 </html>
